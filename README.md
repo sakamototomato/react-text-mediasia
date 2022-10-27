@@ -1,5 +1,26 @@
 # Asteroids Frontend Interview
 
+
+<details>
+
+<summary>Table of content</summary>
+
+- [Program description](#program-description)
+- [Rules](#rules)
+  - [Map](#map)
+  - [Time](#time)
+  - [Planet](#planet)
+  - [Miner](#miner)
+  - [Asteroid](#asteroid)
+  - [Mineral](#mineral)
+- [Structure](#structure)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+- [Resources](#resources)
+
+</details>
+
+
 ## Program description
 
 Build an asteroid mining simulation, using react connecting to an express, node, websocket server (provided by Slingshot at [asteroids-backend](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend)).
@@ -20,18 +41,17 @@ There is no final goal to reach. The goal is that the simulation works.
 
 ## Rules
 
-#### Map
+### Map
 
 - The map is a grid of 1000 * 1000. The position of the planets, asteroids and miners is contained within this grid.
 - A position on the map is a `int` ranging from `0` to `999`.
 
-
-#### Time
+### Time
 
 - One second (1000ms) in real life is 1 year in the simulation
 
 
-#### Planet
+### Planet
 
 - A planet can store an infinite number of mineral.
 - A planet has a position (`x`, `y`)
@@ -42,7 +62,7 @@ There is no final goal to reach. The goal is that the simulation works.
 	- Spawning a miner is done manually from the frontend (see design)
 
 
-#### Miner
+### Miner
 
 - A miner has 3 main characteristics:
 	- `carryCapacity` (`int` from `1` to `200`), this is the maximum number of minerals a miner can carry at one time
@@ -71,8 +91,7 @@ There is no final goal to reach. The goal is that the simulation works.
 	- Transfering minerals to planet `[planet name]`
 	- ... and others if you think they make sense
 
-
-#### Asteroid
+### Asteroid
 
 - An asteroid has a position (`x`, `y`)
 - An asteroid has a status (`1`: `has minerals`, `0`: `depleted`) - default to `1`
@@ -80,15 +99,13 @@ There is no final goal to reach. The goal is that the simulation works.
 - When a miner mines an asteroid, the amount of mined minerals is substracted from the amount stored in the asteroid
 - When an asteroid has no minerals anymore, its status changes from `1` to `0`
 
-#### Mineral
+### Mineral
 
 - An amount of mineral is always an `unsigned int`
 
 ## Structure
 
-The deliverable a frontend built using React.
-
-The frontend shoud interact with the backend in 2 ways:
+The deliverable a frontend built using React connecting to provided backend in 2 ways:
 
 - Websocket:
 	- All planet, miners and asteroids status and information displayed on the frontend should be updated live via a websocket connection to the backend
@@ -103,17 +120,22 @@ The frontend shoud interact with the backend in 2 ways:
 		- DELETE `/miners/[miner ID]`: delete a miner based on its ID
 	- Same instruction for planets and asteroids
 
+### Frontend
 
-## Frontend
+The frontend is simple in terms of design. What we are paying attention to is the accuracy of the design, how close it is to the original design and the Websocket integration.
 
-The frontend is simple in terms of design. What we are paying attention to is the API and Websocket integration.
+### Backend
+
+As mentionned earlier in this document, the backend is already provided with its [own repo](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend). The usage of the backend is descibred within the repository and a complete Postman collection is also provided to help you navigate the api clearly.
 
 ## Resources
 
-- Design : https://www.figma.com/file/3nTxwppfcPnOD2K6Yaed5z/Recruitement-test-Backend?node-id=6%3A15971
-- Backend base : [provided there](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend)
-
+- Design : [Figma](https://www.figma.com/file/3nTxwppfcPnOD2K6Yaed5z/Recruitement-test-Backend?node-id=6%3A15971)
+- Backend base : [asteroids-backend](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend)
+- Assets: some of the assets are already available for you to use in this repo, within the [assets folder](assets).
 
 
 ![List of miners](/assets/images/miners.png)
 
+Buckle up, ignition and liftoff !
+Good luck !
