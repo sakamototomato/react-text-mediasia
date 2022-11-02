@@ -159,8 +159,6 @@ As a frontend developer you will provide a frontend which follows all best pract
 - Backend base : [asteroids-backend](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend)
 - Assets: some of the assets are already available for you to use in this repo, within the [assets folder](assets).
 
-![List of miners](/assets/images/miners.png)
-
 ### Access figma file
 
 To access the full capabilities of our figma design (select elements, export elements, view font size, view css properties, etc) your need to be logged in to a figma account.
