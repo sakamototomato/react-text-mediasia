@@ -12,10 +12,11 @@
   - [Miner](#miner)
   - [Asteroid](#asteroid)
   - [Mineral](#mineral)
-- [Structure](#structure)
+- [Structure & Deliverables](#structure-deliverables)
   - [Frontend](#frontend)
   - [Backend](#backend)
 - [Resources](#resources)
+  - [Access figma file](#access-figma-file)
 
 </details>
 
@@ -109,7 +110,7 @@ There is no final goal to reach. The goal is that the simulation works.
 
 - An amount of mineral is always an `unsigned int`
 
-## Structure
+## Structure & Deliverables
 
 The deliverable is a frontend built using `React` connecting to provided backend in 2 ways:
 
@@ -133,6 +134,11 @@ The frontend is simple in terms of design. What we are paying attention to is th
 ### Backend
 
 As mentionned earlier in this document, the backend is already provided with its [own repo](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend). The usage of the backend is descibred within the repository and a complete Postman collection is also provided to help you navigate the api clearly.
+
+
+### Icons
+
+All icons can be exported from Figma as SVG files. As we all love best practices, we expect you to build a webfont using these icons, and use the webfont in your CSS integration to position the icons on the pages.
 
 ## Resources
 
