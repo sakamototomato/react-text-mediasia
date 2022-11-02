@@ -135,10 +135,23 @@ The frontend is simple in terms of design. What we are paying attention to is th
 
 As mentionned earlier in this document, the backend is already provided with its [own repo](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend). The usage of the backend is descibred within the repository and a complete Postman collection is also provided to help you navigate the api clearly.
 
-
 ### Icons
 
 All icons can be exported from Figma as SVG files. As we all love best practices, we expect you to build a webfont using these icons, and use the webfont in your CSS integration to position the icons on the pages.
+
+### Fonts
+
+Both `lato` and `poppins` fonts used in the design are provided in the `assets` folder in this repository
+
+### Other recommendation
+
+As a frontend developer you will provide a frontend which follows all best practices and you will ensure your code contains:
+
+- Favicon for several type of devices
+- Manifest
+- Well structured metatags (ex. for SEO and / or Sharing on social media)
+- Compressed assets (using tinypng or similar)
+- A README documentation which explains your structure and how to run your code / build your code for production
 
 ## Resources
 
