@@ -1,6 +1,5 @@
 # Asteroids Frontend Interview
 
-
 <details>
 
 <summary>Table of content</summary>
@@ -21,9 +20,19 @@
 </details>
 
 
-## Program description
+## Objective & deliverables
 
-Build an asteroid mining simulation, using react connecting to an express, node, websocket server (provided by Slingshot at [asteroids-backend](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend)).
+Build an asteroid mining simulation, using react and scss (or less) for the frontend, connecting to an express, node, websocket backend server (the backend server is provided by Slingshot at [asteroids-backend](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend)).
+
+Your deliverable is a react frontend, which reads and writes information from the backend from 2 sources:
+- REST API
+- Websocket
+
+Please read carefully the rules below to understand what the backend does, and how you should reflect it on the frontend.
+
+## Rules
+
+The following rules are implemented in the backend, and the state of the backend should be reflected on the frontend.
 
 The simulation starts with 3 planets, 20 asteroids and 9 miners.
 
@@ -39,8 +48,6 @@ The simulation is based on an event loop, 1 second in real life equals 1 year in
 
 There is no final goal to reach. The goal is that the simulation works.
 
-## Rules
-
 ### Map
 
 - The map is a grid of 1000 * 1000. The position of the planets, asteroids and miners is contained within this grid.
@@ -49,7 +56,6 @@ There is no final goal to reach. The goal is that the simulation works.
 ### Time
 
 - One second (1000ms) in real life is 1 year in the simulation
-
 
 ### Planet
 
@@ -105,12 +111,12 @@ There is no final goal to reach. The goal is that the simulation works.
 
 ## Structure
 
-The deliverable a frontend built using React connecting to provided backend in 2 ways:
+The deliverable is a frontend built using `React` connecting to provided backend in 2 ways:
 
-- Websocket:
+- `Websocket`:
 	- All planet, miners and asteroids status and information displayed on the frontend should be updated live via a websocket connection to the backend
 	- Each time a miner, planet, asteroid is created or modified on the backend, it should be updated live on the frontend
-- REST API:
+- `REST API`:
 	- All data should be accessible via a REST API structure:
 		- GET `/miners`: return the list of miners
 		- GET `/miners?planetId=[planet ID]`: return the list of miners from a given planet ID
@@ -122,7 +128,7 @@ The deliverable a frontend built using React connecting to provided backend in 2
 
 ### Frontend
 
-The frontend is simple in terms of design. What we are paying attention to is the accuracy of the design, how close it is to the original design and the Websocket integration.
+The frontend is simple in terms of design. What we are paying attention to is the accuracy of the HTML / CSS integration, how close it is to the original design, the way you handle DOM states (hover / active / disabled / form errors / etc.), animations, popups, etc., and the way you handle API connection, state management and websockets.
 
 ### Backend
 
@@ -130,12 +136,19 @@ As mentionned earlier in this document, the backend is already provided with its
 
 ## Resources
 
-- Design : [Figma](https://www.figma.com/file/3nTxwppfcPnOD2K6Yaed5z/Recruitement-test-Backend?node-id=6%3A15971)
+- Design : [Figma](https://www.figma.com/file/OX9KUE33QGTyaSfpiBMsEN/%5BSlingshot%5D-Asteroids---Javascript-Development-Test). To view this figma file you should be
 - Backend base : [asteroids-backend](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend)
 - Assets: some of the assets are already available for you to use in this repo, within the [assets folder](assets).
 
-
 ![List of miners](/assets/images/miners.png)
+
+### Access figma file
+
+To access the full capabilities of our figma design (select elements, export elements, view font size, view css properties, etc) your need to be logged in to a figma account.
+
+1. Create a [Figma account](https://figma.com) or [login](https://figma.com) to your existing figma account
+2. Open the [Figma link](https://www.figma.com/file/OX9KUE33QGTyaSfpiBMsEN/%5BSlingshot%5D-Asteroids---Javascript-Development-Test)
+3. Enter the following password: SlingshotToAsteroids 
 
 Buckle up, ignition and liftoff !
 Good luck !
