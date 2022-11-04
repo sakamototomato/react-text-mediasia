@@ -155,7 +155,7 @@ As a frontend developer you will provide a frontend which follows all best pract
 
 ## Resources
 
-- Design : [Figma](https://www.figma.com/file/OX9KUE33QGTyaSfpiBMsEN/%5BSlingshot%5D-Asteroids---Javascript-Development-Test). To view this figma file you should be
+- Design : [Figma](https://www.figma.com/file/OX9KUE33QGTyaSfpiBMsEN/%5BSlingshot%5D-Asteroids---Javascript-Development-Test). To view this figma file you should be logged in with your figma account.
 - Backend base : [asteroids-backend](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend)
 - Assets: some of the assets are already available for you to use in this repo, within the [assets folder](assets).
 
