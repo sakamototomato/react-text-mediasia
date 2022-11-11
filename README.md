@@ -15,6 +15,8 @@
 - [Structure & Deliverables](#structure-deliverables)
   - [Frontend](#frontend)
   - [Backend](#backend)
+    - [Online](#online)
+    - [Local](#local)
 - [Resources](#resources)
   - [Access figma file](#access-figma-file)
 
@@ -133,7 +135,15 @@ The frontend is simple in terms of design. What we are paying attention to is th
 
 ### Backend
 
-As mentionned earlier in this document, the backend is already provided with its [own repo](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend). The usage of the backend is descibred within the repository and a complete Postman collection is also provided to help you navigate the api clearly.
+As mentionned earlier in this document, the backend is already provided by Slingshot. You can access in 2 ways.
+
+#### Online
+
+An already deployed version of it is already available for use at [https://asteroids.dev.mediasia.cn](https://asteroids.dev.mediasia.cn/). On that version, all datas are flushed every 6 minutes. If you decide to go with the online version, feel free to still check the [backend repo](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend) as it contains a Postman collection that can be a good documentation for all the available routes.
+
+#### Local
+
+If you wants more customization, you can retrieve the backend with its [own repo](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend). The usage of the backend is descibred within the repository and a complete Postman collection is also provided to help you navigate the api clearly.
 
 ### Icons
 
