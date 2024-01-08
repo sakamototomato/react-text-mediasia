@@ -25,7 +25,7 @@
 
 ## Objective & deliverables
 
-Build an asteroid mining simulation, using react and scss (or less) for the frontend, connecting to an express, node, websocket backend server (the backend server is provided by Slingshot at [asteroids-backend](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend)).
+Build an asteroid mining simulation, using react and scss (or less) for the frontend, connecting to an express, node, websocket backend server (the backend server is provided by Slingshot at [asteroids-backend](https://git.mediasia.cn/mediasia-interactive/asteroids-backend)).
 
 Your deliverable is a react frontend, which reads and writes information from the backend from 2 sources:
 - REST API
@@ -139,11 +139,11 @@ As mentionned earlier in this document, the backend is already provided by Sling
 
 #### Online
 
-An already deployed version of it is already available for use at [https://asteroids.dev.mediasia.cn](https://asteroids.dev.mediasia.cn/). On that version, all datas are flushed every 6 minutes. If you decide to go with the online version, feel free to still check the [backend repo](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend) as it contains a Postman collection that can be a good documentation for all the available routes.
+An already deployed version of it is already available for use at [https://asteroids.dev.mediasia.cn](https://asteroids.dev.mediasia.cn/). On that version, all datas are flushed every 6 minutes. If you decide to go with the online version, feel free to still check the [backend repo](https://git.mediasia.cn/mediasia-interactive/asteroids-backend) as it contains a Postman collection that can be a good documentation for all the available routes.
 
 #### Local
 
-If you wants more customization, you can retrieve the backend with its [own repo](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend). The usage of the backend is descibred within the repository and a complete Postman collection is also provided to help you navigate the api clearly.
+If you wants more customization, you can retrieve the backend with its [own repo](https://git.mediasia.cn/mediasia-interactive/asteroids-backend). The usage of the backend is descibred within the repository and a complete Postman collection is also provided to help you navigate the api clearly.
 
 ### Icons
 
@@ -166,7 +166,7 @@ As a frontend developer you will provide a frontend which follows all best pract
 ## Resources
 
 - Design : [Figma](https://www.figma.com/file/OX9KUE33QGTyaSfpiBMsEN/%5BSlingshot%5D-Asteroids---Javascript-Development-Test). To view this figma file you should be logged in with your figma account.
-- Backend base : [asteroids-backend](https://git.mediasia-group.com/mediasia-interactive/asteroids-backend)
+- Backend base : [asteroids-backend](https://git.mediasia.cn/mediasia-interactive/asteroids-backend)
 - Assets: some of the assets are already available for you to use in this repo, within the [assets folder](assets).
 
 ### Access figma file
