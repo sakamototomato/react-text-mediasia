@@ -25,32 +25,27 @@
 
 ## Objective & deliverables
 
-Build an asteroid mining simulation, using react and scss (or less) for the frontend, connecting to an express, node, websocket backend server (the backend server is provided by Slingshot at [asteroids-backend](https://git.mediasia.cn/mediasia-interactive/asteroids-backend)).
+Build an asteroid mining simulation, using react and scss (or less), connecting to an express, node, websocket backend server. The backend server is provided by VO2 APAC at [asteroids-backend](https://asteroids.dev.mediasia.cn/) ([source code](https://git.mediasia.cn/mediasia-interactive/asteroids-backend)).
 
-Your deliverable is a react frontend, which reads and writes information from the backend from 2 sources:
-- REST API
-- Websocket
-
-Please read carefully the rules below to understand what the backend does, and how you should reflect it on the frontend.
+The delivery will be done according the following steps. Do not start the next step if the previous one isn't completed yet, as we're evaluating you on skills in order of importance.
 
 ## Rules
 
-The following rules are implemented in the backend, and the state of the backend should be reflected on the frontend.
+The following rules are implemented on the backend side which is provided by VO2, so you do not need to implement it but it will gives you the comprehension tools behind its logic.
 
 The simulation starts with 3 planets, 20 asteroids and 9 miners.
-
 Each miner is assigned to a specific planet. A miner is a spacecraft which can travel from its planet to an asteroid, and mine its minerals.
 Each miner has a mineral carry capacity, a travel speed and a mining speed. Miners start the simulation from their origin planet, will travel to an asteroid, mine minerals, and return back to their planet to drop the minerals.
 
 A planet can store minerals. Each planet can spawn new miner when it has enough resources. It takes 1000 minerals to spawn a new miner, and the minerals are removed from the planet.
 
-Each asteroid has a limited quantity of minerals, which decreases when it is mined by a miner, up to depletion. 
-An asteroid can be mined by only one miner at a time.
+Each asteroid has a limited quantity of minerals, which decreases when it is mined by a miner, up to depletion. An asteroid can be mined by only one miner at a time.
 
 The simulation is based on an event loop, 1 second in real life equals 1 year in the simulation.
 
 There is no final goal to reach. The goal is that the simulation works.
 
+Every 6 min, the simulation is flushed and planets and asteroids are re-rendered at random locations.
 ### Map
 
 - The map is a grid of 1000 * 1000. The position of the planets, asteroids and miners is contained within this grid.
@@ -116,9 +111,6 @@ There is no final goal to reach. The goal is that the simulation works.
 
 The deliverable is a frontend built using `React` connecting to provided backend in 2 ways:
 
-- `Websocket`:
-	- All planet, miners and asteroids status and information displayed on the frontend should be updated live via a websocket connection to the backend
-	- Each time a miner, planet, asteroid is created or modified on the backend, it should be updated live on the frontend
 - `REST API`:
 	- All data should be accessible via a REST API structure:
 		- GET `/miners`: return the list of miners
@@ -128,54 +120,88 @@ The deliverable is a frontend built using `React` connecting to provided backend
 		- PUT `/miners/[miner ID]`: update a miner based on its ID
 		- DELETE `/miners/[miner ID]`: delete a miner based on its ID
 	- Same instruction for planets and asteroids
+- `Websocket`:
+	- All planet, miners and asteroids status and information displayed on the frontend should be updated live via a websocket connection to the backend
+	- Each time a miner, planet, asteroid is created or modified on the backend, it should be updated live on the frontend
 
-### Frontend
+### Step 1
 
-The frontend is simple in terms of design. What we are paying attention to is the accuracy of the HTML / CSS integration, how close it is to the original design, the way you handle DOM states (hover / active / disabled / form errors / etc.), animations, popups, etc., and the way you handle API connection, state management and websockets.
+This step is based solely on the "Step 1" on the figma
 
-### Backend
+In that step, the goal is to create a 1-page app that display the list of miners fetched from the backend. A click on a miner opens a popup with the history of the miner. The other main part of that step is to implement a websocket connection between the react app and the backend.
 
-As mentionned earlier in this document, the backend is already provided by Slingshot. You can access in 2 ways.
+#### Features
 
-#### Online
+- GET request to the backend
+- adding a history page accessible through a click on a miner in the miner list on the result of the GET /history?minerId=
+- display a list according to the design
+- connection to the websocket and live updating of the list
 
-An already deployed version of it is already available for use at [https://asteroids.dev.mediasia.cn](https://asteroids.dev.mediasia.cn/). On that version, all datas are flushed every 6 minutes. If you decide to go with the online version, feel free to still check the [backend repo](https://git.mediasia.cn/mediasia-interactive/asteroids-backend) as it contains a Postman collection that can be a good documentation for all the available routes.
+___
 
-#### Local
+### Step 2
 
-If you wants more customization, you can retrieve the backend with its [own repo](https://git.mediasia.cn/mediasia-interactive/asteroids-backend). The usage of the backend is descibred within the repository and a complete Postman collection is also provided to help you navigate the api clearly.
+This step is based on both "Step 2" on the figma
 
-### Icons
+In that step, the goal is to update your 1-page app to contains multiple pages and a form.
 
-All icons can be exported from Figma as SVG files. As we all love best practices, we expect you to build a webfont using these icons, and use the webfont in your CSS integration to position the icons on the pages.
+#### Features
 
-### Fonts
+- all features from step 1
+- adding a menu to switch between pages
+- adding an asteroid page list based on the result of the GET /asteroids
+- adding a planet page list based on the result of the GET /planets
+- adding a button "Create a miner" to be displayed on a miner whenever it got sufficient ressources
+- adding a form to create a miner and send the result as a PUSH /miner + Implementation of a form validation
 
-Both `lato` and `poppins` fonts used in the design are provided in the `assets` folder in this repository
+___
+
+### Step 3
+
+This step is based on both "Step 3" on the figma
+
+In that step, the goal is to update your app with a 4th page
+
+#### Features
+
+- all features from step 1 and 2
+- add a live rendering of the planets, miners and asteroids
 
 ### Other recommendation
 
 As a frontend developer you will provide a frontend which follows all best practices and you will ensure your code contains:
 
-- Favicon for several type of devices
-- Manifest
-- Well structured metatags (ex. for SEO and / or Sharing on social media)
-- Compressed assets (using tinypng or similar)
+- Clear and readable code
+- Comments wherever needed
+- a linter configuation to stop eventual issues and indent you code well
 - A README documentation which explains your structure and how to run your code / build your code for production
 
 ## Resources
 
-- Design : [Figma](https://www.figma.com/file/OX9KUE33QGTyaSfpiBMsEN/%5BSlingshot%5D-Asteroids---Javascript-Development-Test). To view this figma file you should be logged in with your figma account.
-- Backend base : [asteroids-backend](https://git.mediasia.cn/mediasia-interactive/asteroids-backend)
+- Backend live: [https://asteroids.dev.mediasia.cn](https://asteroids.dev.mediasia.cn/)
+- Backend source code: [backend repo](https://git.mediasia.cn/mediasia-interactive/asteroids-backend) it contains a Postman collection that can be a good documentation for all the available routes.
+- Figma: [Figma](https://www.figma.com/file/agp1eec4zmGh4jzeOS3QxN/%5BVO2%5D-Asteroids---Javascript-Development-Test). To view this figma file you should be logged in with your figma account.
 - Assets: some of the assets are already available for you to use in this repo, within the [assets folder](assets).
+
+### Icons
+
+All icons can be exported from Figma as SVG files. As we all love best practices, we encourage you to build a webfont using these icons, and use the webfont in your CSS integration to position the icons on the pages.
+
+### Fonts
+
+Both `lato` and `poppins` fonts used in the design are provided in the `assets` folder in this repository
+
+### Local
+
+If you wants more customization, you can retrieve the backend with its [own repo](https://git.mediasia.cn/mediasia-interactive/asteroids-backend). The usage of the backend is descibred within the repository and a complete Postman collection is also provided to help you navigate the api clearly.
 
 ### Access figma file
 
 To access the full capabilities of our figma design (select elements, export elements, view font size, view css properties, etc) your need to be logged in to a figma account.
 
 1. Create a [Figma account](https://figma.com) or [login](https://figma.com) to your existing figma account
-2. Open the [Figma link](https://www.figma.com/file/OX9KUE33QGTyaSfpiBMsEN/%5BSlingshot%5D-Asteroids---Javascript-Development-Test)
-3. Enter the following password: SlingshotToAsteroids 
+2. Open the [Figma link](https://www.figma.com/file/agp1eec4zmGh4jzeOS3QxN/%5BVO2%5D-Asteroids---Javascript-Development-Test)
+3. Enter the following password: VO2#jstest 
 
 Buckle up, ignition and liftoff !
 Good luck !
