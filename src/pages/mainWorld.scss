@@ -1,0 +1,36 @@
+.page-navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+
+    .page-item {
+        cursor: pointer;
+        user-select: none;
+        display: block;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        text-transform: capitalize;
+        --active-color: #38D9A9;
+        color: var(white);
+
+        &.active {
+            color: var(--active-color);
+        }
+
+        i {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            background-color: transparent;
+            width: 32px;
+            height: 32px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        span {
+            color: var(--text-gray);
+        }
+    }
+}

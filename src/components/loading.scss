@@ -1,0 +1,16 @@
+.loading {
+    background-image: url("/public/icons/loading-circle.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    animation: rotate;
+}
+
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
