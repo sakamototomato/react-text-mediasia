@@ -4,7 +4,8 @@ import classNames from "classnames";
 import Miners from "./miners/Miners";
 import Planets from "./planets/Planets";
 import SpaceCanvas from "./SpaceCanvas";
-import { useGetMinersQuery, useGetPlanetsQuery } from "../api";
+import { useGetMinersQuery, useGetPlanetsQuery } from "../api/space";
+import Asteroids from "./asteroids/Asteroids";
 
 type Tab = "miners" | "asteroids" | "planets";
 function MainWorld() {
@@ -89,6 +90,7 @@ function MainWorld() {
           <div className="page-container">
             {tab === "miners" && <Miners />}
             {tab === "planets" && <Planets />}
+            {tab === "asteroids" && <Asteroids />}
           </div>
         </div>
         <div className="main-world-canvas">

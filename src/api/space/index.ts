@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Miner, MiningEntity, Planet } from "./types";
+import { Asteroid, Miner, MiningEntity, Planet } from "./types";
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { useEffect } from "react";
-import { reset } from "../store/slices/miners";
-import { useGetMiners } from "../store/selectors/spaces";
+import { reset } from "../../store/slices/miners";
+import { useGetMiners } from "../../store/selectors/spaces";
+import { NewMinerForm } from "../../pages/planets/newMinerForm";
 
 
 /* All data should be accessible via a REST API structure:
@@ -27,6 +28,7 @@ export const baseUri = "https://asteroids.dev.mediasia.cn/"
 // useSWR<Array<Planet>, Error>(baseUri + "miners?planetId=" + planetId, fetcher)
 
 
+
 export const spaceApi = createApi({
     reducerPath: 'spaceApi',
     baseQuery: fetchBaseQuery({ baseUrl: "https://asteroids.dev.mediasia.cn/" }),
@@ -38,22 +40,38 @@ export const spaceApi = createApi({
         getMinerHistory: builder.query<Array<MiningEntity>, string | number>({
             query: (minerId) => "/history?minerId=" + minerId,
         }),
+        getAsteroids: builder.query<Array<Asteroid>, undefined>({
+            query: () => `asteroids`,
+        }),
         getPlanets: builder.query<Array<Planet>, undefined>({
             query: () => `planets`,
         }),
         getPlanetMiners: builder.query<Array<Miner>, string>({
             query: (planetId) => "miners?planetId=" + planetId,
         }),
+        postNewMiner: builder.mutation<Miner, NewMinerForm & {
+            status: number,
+            angle: number,
+            x: number,
+            y: number,
+            minerals: number
+        }>({
+            query: (body) => ({
+                url: `miners`,
+                method: "POST",
+                body
+            }),
+        }),
     }),
 })
 
-export const { useGetMinerHistoryQuery, useGetPlanetsQuery, useGetPlanetMinersQuery } = spaceApi
+export const { useGetMinerHistoryQuery, useGetPlanetsQuery, useGetPlanetMinersQuery, useGetAsteroidsQuery, usePostNewMinerMutation } = spaceApi
 export const useGetMinersQuery = () => {
     const dispatch = useDispatch()
     const queryRes = spaceApi.useGetMinersQuery(undefined)
     useEffect(() => {
         dispatch(reset(queryRes.data as Miner[]))
     }, [dispatch, queryRes.data])
-    const miners = useGetMiners()
-    return { ...queryRes, data: miners }
+    const minersObj = useGetMiners()
+    return { ...queryRes, data: minersObj.miners, minersMap: minersObj.minersMap }
 }

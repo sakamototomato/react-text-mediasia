@@ -16,7 +16,19 @@ export type Miner = {
     target: string; // Represents the target (e.g., Asteroid) ID
     targetType: string; // Describes the type of the target, e.g., "Asteroid"
 }
-
+export type Asteroid = {
+    position: {
+        x: number;
+        y: number;
+    };
+    capability: number;
+    _id: string;
+    name: string;
+    minerals: number;
+    status: number;
+    currentMiner: string | null; // Assuming it's either a string (miner ID) or null if unoccupied
+    __v: number;
+}
 export type Planet = {
     position: {
         x: number;

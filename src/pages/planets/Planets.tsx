@@ -1,12 +1,15 @@
 import { Table } from "antd";
-import { ComponentProps, useMemo } from "react";
+import { ComponentProps, useCallback, useMemo, useState } from "react";
 import Loading from "../../components/Loading";
-import { Planet } from "../../api/types";
+import { Planet } from "../../api/space/types";
 import "./planets.scss";
-import { useGetPlanetsQuery } from "../../api";
+import { useGetPlanetsQuery } from "../../api/space";
+import NewMinerToPlanetModal from "./NewMinerToPlanetModal";
+import CapacityLabel from "../components/CapacityLabel";
 
 function Planets() {
   const { data, isLoading } = useGetPlanetsQuery(undefined);
+  const [planetOfNewMiner, setPlanetOfNewMiner] = useState<Planet>();
   const columns: ComponentProps<typeof Table>["columns"] = [
     {
       title: "Name",
@@ -26,7 +29,12 @@ function Planets() {
       dataIndex: "Minerals",
       key: "Minerals",
       render: function (_: unknown, record: Planet) {
-        return <span>{`${record.minerals}/${record.capability}`}</span>;
+        return (
+          <CapacityLabel
+            current={record.capability}
+            max={record.capability}
+          ></CapacityLabel>
+        );
       } as never,
     },
     {
@@ -34,15 +42,25 @@ function Planets() {
       dataIndex: "action",
       key: "action",
       render: function (_: unknown, record: Planet) {
-        return (
-          <div className="action-btn" onClick={() => {}}>
+        const cost = 1000;
+        return record.minerals > cost ? (
+          <div
+            className="action-btn"
+            onClick={() => setPlanetOfNewMiner(record)}
+          >
             <i className="add"></i>
             <span>Create a miner</span>
           </div>
+        ) : (
+          <span>-</span>
         );
       } as never,
     },
   ];
+  const handCloseModal = useCallback(
+    () => setPlanetOfNewMiner(undefined),
+    [setPlanetOfNewMiner]
+  );
 
   const planets = useMemo(
     () =>
@@ -62,6 +80,10 @@ function Planets() {
         pagination={false}
         footer={undefined}
       ></Table>
+      <NewMinerToPlanetModal
+        planet={planetOfNewMiner}
+        onClose={handCloseModal}
+      />
     </div>
   );
 }

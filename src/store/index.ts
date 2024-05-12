@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { spaceApi } from '../api'
+import { spaceApi } from '../api/space'
 import { minerReducer } from './slices/miners'
 
 export const store = configureStore({

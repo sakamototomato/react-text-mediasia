@@ -12,7 +12,7 @@ class WS extends EventEmitter {
     socket: WebSocket
     constructor() {
         super()
-        const socket = new WebSocket('ws://localhost:3000')
+        const socket = new WebSocket('ws://localhost:3000') // FIXME: Didn't found any available websocket in backend source codes
         socket.addEventListener('open', () => {
             console.log("ws connected")
         })

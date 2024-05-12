@@ -1,0 +1,36 @@
+form {
+    padding: 20px;
+}
+
+.miner-modal {
+
+    .ant-modal-header .miner-modal-title {
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.point-container {
+    text-align: center;
+    color: white;
+}
+
+.actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+
+    & .save-btn {
+        background: #E1E2EF;
+        color: black;
+        padding: 2px 20px;
+    }
+}

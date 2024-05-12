@@ -1,3 +1,7 @@
 .isFull {
     color: var(--active-color);
 }
+
+.isEmpty {
+    color: var(--warning-color);
+}

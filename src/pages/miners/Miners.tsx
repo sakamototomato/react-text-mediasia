@@ -5,11 +5,11 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { EMinerStatus, Miner } from "../../api/types";
+import { EMinerStatus, Miner } from "../../api/space/types";
 import { Table } from "antd";
 import Loading from "../../components/Loading";
 import MinerHistoryModal from "./MinerHistoryModal";
-import { useGetMinersQuery } from "../../api";
+import { useGetMinersQuery } from "../../api/space";
 import { useGetPlanets } from "../../store/selectors/spaces";
 import { EGameEvent, ws } from "../../api/ws";
 import { useDispatch } from "react-redux";

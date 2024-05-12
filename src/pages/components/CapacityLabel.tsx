@@ -1,5 +1,5 @@
 import classNames from "classnames";
-
+import "./capacityLabel.scss";
 interface IProps {
   current: number | string;
   max: number | string;
@@ -7,7 +7,10 @@ interface IProps {
 function CapacityLabel(props: IProps) {
   return (
     <span
-      className={classNames({ isFull: props.current === props.max })}
+      className={classNames({
+        isFull: props.current == props.max,
+        isEmpty: props.current == 0,
+      })}
     >{`${props.current}/${props.max}`}</span>
   );
 }

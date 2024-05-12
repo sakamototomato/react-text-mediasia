@@ -1,9 +1,9 @@
 import { Modal, Table } from "antd";
-import { Miner, MiningEntity } from "../../api/types";
+import { Miner, MiningEntity } from "../../api/space/types";
 import CloseIcon from "../../components/CloseIcon";
 import "./minerHistoryModal.scss";
 import { ComponentProps, useMemo } from "react";
-import { useGetMinerHistoryQuery } from "../../api";
+import { useGetMinerHistoryQuery } from "../../api/space";
 import Loading from "../../components/Loading";
 import { formatDate } from "../../utils/date";
 import CapacityLabel from "../components/CapacityLabel";

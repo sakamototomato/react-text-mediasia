@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { Miner } from "../../api/types"
+import { Miner } from "../../api/space/types"
 
 export interface MinerListSlice {
     miners: Array<Miner>
