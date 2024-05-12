@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { spaceApi } from '../api'
+import { minerReducer } from './slices/miners'
 
 export const store = configureStore({
     reducer: {
         [spaceApi.reducerPath]: spaceApi.reducer,
+        miners: minerReducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(spaceApi.middleware),

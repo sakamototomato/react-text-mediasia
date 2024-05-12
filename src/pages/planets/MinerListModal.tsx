@@ -5,6 +5,7 @@ import { useGetPlanetMinersQuery } from "../../api";
 import { Planet, EMinerStatus, Miner } from "../../api/types";
 import CloseIcon from "../../components/CloseIcon";
 import Loading from "../../components/Loading";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 interface IProps {
   planet: Planet;
@@ -12,7 +13,9 @@ interface IProps {
 function MinerListModal(
   props: IProps & Omit<ComponentProps<typeof Modal>, "title">
 ) {
-  const { isLoading, data } = useGetPlanetMinersQuery(props?.planet?._id);
+  const { isLoading, data } = useGetPlanetMinersQuery(
+    props?.planet?._id || skipToken
+  );
   const miners = useMemo(
     () => data?.map((item) => ({ ...item, key: item?._id })),
     [data]

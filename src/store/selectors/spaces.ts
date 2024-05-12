@@ -3,6 +3,8 @@ import { RootState } from "..";
 import { useMemo } from "react";
 import { Planet } from "../../api/types";
 
+const getMiners = (root: RootState) => root.miners
+
 export const getPlanets = (root: RootState) => root.spaceApi.queries["getPlanets(undefined)"]
 export const useGetPlanets = () => {
 
@@ -18,4 +20,8 @@ export const useGetPlanets = () => {
         return map
     }, [res?.data])
     return { ...res, dataMap }
+}
+export const useGetMiners = () => {
+    const miners = useSelector(getMiners).miners
+    return miners;
 }

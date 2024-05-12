@@ -1,25 +1,45 @@
-import React, { ComponentProps, useCallback, useMemo, useState } from "react";
+import React, {
+  ComponentProps,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { EMinerStatus, Miner } from "../../api/types";
 import { Table } from "antd";
 import Loading from "../../components/Loading";
 import MinerHistoryModal from "./MinerHistoryModal";
 import { useGetMinersQuery } from "../../api";
 import { useGetPlanets } from "../../store/selectors/spaces";
+import { EGameEvent, ws } from "../../api/ws";
+import { useDispatch } from "react-redux";
+import { add } from "../../store/slices/miners";
 
 function Miners() {
   const planets = useGetPlanets()?.dataMap;
-  const { data, isLoading } = useGetMinersQuery(undefined);
+  const { data, isLoading } = useGetMinersQuery();
+
   const miners = useMemo(
     () => data?.map((item) => ({ ...item, key: item?._id })),
     [data]
   );
-  console.log("planets", planets);
   const minerStatusMap = EMinerStatus as Record<number, string>;
   const [selectedMiner, setSelectedMiner] = useState<Miner>();
   const handCloseModal = useCallback(
     () => setSelectedMiner(undefined),
     [setSelectedMiner]
   );
+
+  const dipatch = useDispatch();
+  // registe event callback of websock in components
+  useEffect(() => {
+    const callback = (newMiner: Miner) => {
+      // update state in redux
+      dipatch(add(newMiner));
+    };
+    ws.addListener(EGameEvent.minerCreate, callback);
+    ws.removeListener(EGameEvent.minerCreate, callback);
+  }, [dipatch]);
 
   const columns: ComponentProps<typeof Table>["columns"] = [
     {

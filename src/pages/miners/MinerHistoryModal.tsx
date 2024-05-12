@@ -7,6 +7,7 @@ import { useGetMinerHistoryQuery } from "../../api";
 import Loading from "../../components/Loading";
 import { formatDate } from "../../utils/date";
 import CapacityLabel from "../components/CapacityLabel";
+import "./minerHistoryModal.scss";
 interface IProps {
   miner: Miner;
 }

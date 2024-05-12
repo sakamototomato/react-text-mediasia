@@ -1,5 +1,9 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Miner, MiningEntity, Planet } from "./types";
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { useEffect } from "react";
+import { reset } from "../store/slices/miners";
+import { useGetMiners } from "../store/selectors/spaces";
 
 
 /* All data should be accessible via a REST API structure:
@@ -26,6 +30,7 @@ export const baseUri = "https://asteroids.dev.mediasia.cn/"
 export const spaceApi = createApi({
     reducerPath: 'spaceApi',
     baseQuery: fetchBaseQuery({ baseUrl: "https://asteroids.dev.mediasia.cn/" }),
+
     endpoints: (builder) => ({
         getMiners: builder.query<Array<Miner>, undefined>({
             query: () => `miners`,
@@ -42,4 +47,13 @@ export const spaceApi = createApi({
     }),
 })
 
-export const { useGetMinersQuery, useGetMinerHistoryQuery, useGetPlanetsQuery, useGetPlanetMinersQuery } = spaceApi
+export const { useGetMinerHistoryQuery, useGetPlanetsQuery, useGetPlanetMinersQuery } = spaceApi
+export const useGetMinersQuery = () => {
+    const dispatch = useDispatch()
+    const queryRes = spaceApi.useGetMinersQuery(undefined)
+    useEffect(() => {
+        dispatch(reset(queryRes.data as Miner[]))
+    }, [dispatch, queryRes.data])
+    const miners = useGetMiners()
+    return { ...queryRes, data: miners }
+}
