@@ -12,11 +12,14 @@ npm run dev
 
 ### Step 1
 
-✔ This step is based solely on the "Step 1" on the figma
+This step is based solely on the "Step 1" on the figma
 
-✔ In that step, the goal is to create a 1-page app that display the list of miners fetched from the backend. A click on a miner opens a popup with the history of the miner.
+In that step, the goal is to
 
-<span style="display:block;text-align:left;color:orangered;">Notsure# The other main part of that step is to implement a websocket connection between the react app and the backend.</span>
+✔ create a 1-page app that display the list of miners fetched from the backend.
+✔ A click on a miner opens a popup with the history of the miner.
+
+<span style="display:block;text-align:left;color:orangered;">The other main part of that step is to implement a websocket connection between the react app and the backend.</span>
 
 ### Step 2
 
