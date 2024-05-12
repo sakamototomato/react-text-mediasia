@@ -1,42 +1,28 @@
-import React, { ComponentProps, useCallback, useMemo, useState } from "react";
-import { EMinerStatus, Miner } from "../../api/types";
-import { Table } from "antd";
+import { Modal, Table } from "antd";
+import { ComponentProps, useMemo } from "react";
+import "./minerListModal.scss";
+import { useGetPlanetMinersQuery } from "../../api";
+import { Planet, EMinerStatus, Miner } from "../../api/types";
+import CloseIcon from "../../components/CloseIcon";
 import Loading from "../../components/Loading";
-import MinerHistoryModal from "./MinerHistoryModal";
-import { useGetMinersQuery } from "../../api";
-import { useGetPlanets } from "../../store/selectors/spaces";
 
-function Miners() {
-  const planets = useGetPlanets()?.dataMap;
-  const { data, isLoading } = useGetMinersQuery(undefined);
+interface IProps {
+  planet: Planet;
+}
+function MinerListModal(
+  props: IProps & Omit<ComponentProps<typeof Modal>, "title">
+) {
+  const { isLoading, data } = useGetPlanetMinersQuery(props?.planet?._id);
   const miners = useMemo(
     () => data?.map((item) => ({ ...item, key: item?._id })),
     [data]
   );
-  console.log("planets", planets);
   const minerStatusMap = EMinerStatus as Record<number, string>;
-  const [selectedMiner, setSelectedMiner] = useState<Miner>();
-  const handCloseModal = useCallback(
-    () => setSelectedMiner(undefined),
-    [setSelectedMiner]
-  );
-
   const columns: ComponentProps<typeof Table>["columns"] = [
     {
       title: "Name",
       dataIndex: "name",
       key: "name",
-      render: function (_: unknown, record: Miner) {
-        return <a onClick={() => setSelectedMiner(record)}>{record.name}</a>;
-      } as never,
-    },
-    {
-      title: "Planet",
-      dataIndex: "planet",
-      key: "planet",
-      render: function (_: unknown, record: Miner) {
-        return <span>{planets.get(record.planet)?.name}</span>;
-      } as never,
     },
     {
       title: "carryCapacity",
@@ -68,9 +54,20 @@ function Miners() {
       },
     },
   ];
-
   return (
-    <>
+    <Modal
+      title={
+        <div className="miner-list-modal-title">
+          List of miners of {props.planet.name}
+        </div>
+      }
+      className="miner-list-modal"
+      closeIcon={<CloseIcon />}
+      footer={false}
+      centered
+      width={700}
+      {...props}
+    >
       {isLoading ? (
         <Loading />
       ) : (
@@ -81,15 +78,8 @@ function Miners() {
           footer={undefined}
         ></Table>
       )}
-      {selectedMiner && (
-        <MinerHistoryModal
-          onOk={handCloseModal}
-          onCancel={handCloseModal}
-          miner={selectedMiner}
-        />
-      )}
-    </>
+    </Modal>
   );
 }
 
-export default Miners;
+export default MinerListModal;

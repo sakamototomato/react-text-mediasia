@@ -2,7 +2,10 @@
   padding: 2rem;
   align-self: start;
   background-color: var(--bg-dark);
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  user-select: text;
+
 }
 
 .header {}

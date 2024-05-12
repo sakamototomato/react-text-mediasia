@@ -1,21 +1,29 @@
 .page-navigation {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     gap: 32px;
 
     .page-item {
         cursor: pointer;
-        user-select: none;
-        display: block;
-        width: 50px;
-        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 70px;
+        height: 70px;
+        font-size: 12px;
+        box-sizing: border-box;
         text-align: center;
         text-transform: capitalize;
         --active-color: #38D9A9;
         color: var(white);
+        border-radius: 8px;
+        border: 2px solid transparent;
 
         &.active {
             color: var(--active-color);
+            border-color: #38D9A9;
         }
 
         i {
@@ -33,4 +41,20 @@
             color: var(--text-gray);
         }
     }
+}
+
+.page-container {
+    margin-top: 24px;
+}
+
+.main-world {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.main-world-page,
+.main-world-canvas {
+    flex: 1;
 }

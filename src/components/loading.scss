@@ -1,11 +1,19 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .loading {
-    background-image: url("/public/icons/loading-circle.svg");
+
+    background-image: url("/public/icons/loader.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    display: inline-block;
+    justify-content: center;
     width: 24px;
     height: 24px;
-    animation: rotate;
+    animation: infinite rotate 1.5s linear reverse;
+    position: absolute;
 }
 
 

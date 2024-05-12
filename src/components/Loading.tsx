@@ -1,8 +1,10 @@
-
+import "./loading.scss";
 function Loading() {
   return (
-    <i className='loading'></i>
-  )
+    <div className="container">
+      <i className="loading"></i>
+    </div>
+  );
 }
 
-export default Loading
+export default Loading;

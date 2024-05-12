@@ -6,3 +6,11 @@
     width: 14px;
     height: 14px;
 }
+
+.action-btn {
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}

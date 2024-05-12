@@ -1,3 +1,5 @@
+// all of theose types are generated in https://tongyi.aliyun.com/qianwen/?sessionId=944c923410c64728ba2235033ff86dd8
+// it also a site like ChatGPT
 export type Miner = {
     _id: string;
     name: string;
@@ -27,7 +29,28 @@ export type Planet = {
     __v: number;
     capability: number;
 }
-
+export type MiningEntity = {
+    capacity: {
+        current: number;
+        max: number;
+    };
+    speed: {
+        travel: number;
+        mining: number;
+    };
+    position: {
+        x: number;
+        y: number;
+    };
+    _id: string;
+    year: number;
+    planet: string;
+    status: number;
+    miner: string; // Presumably the ID of the associated miner
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+}
 /*
 0 (int): Idle
 1 (int): Traveling
@@ -39,4 +62,21 @@ export enum EMinerStatus {
     "Traveling",
     "Mining",
     "Transfering"
+}
+
+
+export enum EminerEntityStatus {
+    /*
+    Miner spawn on planet [planet name]
+
+    Traveling from planet [planet name] to asteroid [asteroid name]
+
+    Mining asteroid [asteroid name] for [number of years] years
+    Traveling back from asteroid [asteroid name] to [planet name]
+
+    Transfering minerals to planet [planet name]
+
+    ... and others if you think they make sense
+    */
+
 }
